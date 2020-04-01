@@ -3,7 +3,7 @@
 
 uLCD_4DGL uLCD(D1, D0, D2);
 PwmOut PWM1(D6);
-//AnalogIn Ain(D7);
+AnalogIn Ain(A0);
 Serial pc(USBTX, USBRX);
 
 float ADCdata;
@@ -22,14 +22,14 @@ int main(void)
     while (1) {
         for (float i = 0; i < 1; i += 0.1) {
             PWM1 = i;
-            // ADCdata = Ain;
-            // pc.printf("%1.3f\r\n", ADCdata);
+            ADCdata = Ain;
+            pc.printf("%1.3f\r\n", ADCdata);
             wait(0.1);
         }
         for (float i = 1; i > 0; i -= 0.1) {
             PWM1 = i;
-            // ADCdata = Ain;
-            // pc.printf("%1.3f\r\n", ADCdata);
+            ADCdata = Ain;
+            pc.printf("%1.3f\r\n", ADCdata);
             wait(0.1);
         }
         
